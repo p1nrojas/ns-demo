@@ -1,0 +1,58 @@
+---
+- hosts: nservers
+  gather_facts: no
+  become: true
+  become_method: sudo
+  vars:
+    named_group: named
+    named_owner: named
+    bind_acls:
+      - name: acl1
+        match_list:
+          - 10.10.10.0/24
+      - name: acl2
+        match_list:
+          - 10.20.10.0/24
+    bind_listen_ipv4:
+      - any
+    bind_allow_query:
+      - 10.10.10.0/24
+      - 10.20.10.0/24
+      - 127.0.0.0/8
+
+    bind_zone_name: nuage.lab
+    bind_zone_networks:
+      - '10.10.10'
+    bind_zone_master_server_ip: 10.10.10.90
+    bind_zone_name_servers:
+      - ns01
+    bind_zone_hosts:
+      - name: ns01
+        ip: 10.10.10.90
+        aliases:
+          - ntp
+          - dns
+      - name: '@'
+        ip: 10.10.10.90
+      - name: master
+        ip: 10.10.10.101
+      - name: minion01
+        ip: 10.10.10.102
+      - name: minion02
+        ip: 10.10.10.103
+      - name: vsd01
+        ip: 10.10.10.95
+      - name: vsc01
+        ip: 10.10.10.96
+      - name: vsc02
+        ip: 10.10.10.97
+    bind_zone_services:
+      - name: _xmpp-client._tcp
+        weight: 10
+        port: 5222
+        target: vsd01.nuage.lab
+
+  roles:
+#    - domain-deploy
+    - bind-install
+    - ntp-install

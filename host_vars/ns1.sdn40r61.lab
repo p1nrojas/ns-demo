@@ -1,0 +1,19 @@
+# *** WARNING ***
+# This is a generated file. Manual changes to this file
+# will be lost if reset-build or build is run
+#
+hypervisor: 192.168.1.113
+memory_KiB: 8388608
+vcpu_num: 4
+disk_GB: 20
+gateway: 10.10.10.1
+interfaces:
+  - { name: eth0 ,
+      bridge: bridge0 ,
+      ip: 10.10.10.20 ,
+      netmask: 255.255.255.0 }
+  - { name: eth1 ,
+      bridge: bridge1 ,
+      ip: 10.10.20.20 ,
+      netmask: 255.255.255.0 }
+ 
