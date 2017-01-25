@@ -6,6 +6,3 @@ images_path: "/var/lib/libvirt/images/"
 image_qcow2: "/tmp/centos.qcow2"
 image_partition: "/dev/sda1"
 cdrom_iso: "cidata.iso"
-vsd:
-  username: "admin"
-  password: "admin"

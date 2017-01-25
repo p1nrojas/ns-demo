@@ -1,3 +1,4 @@
+# Create dns and ntp server for PoCs and demos
 ---
 - hosts: nservers
   gather_facts: no
