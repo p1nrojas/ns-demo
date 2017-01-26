@@ -89,6 +89,6 @@
 
 # defined roles       
   roles:
-#    - bind-install
-#    - ntp-install
+    - bind-install
+    - ntp-install
     - dhcp-install
