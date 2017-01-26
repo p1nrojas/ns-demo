@@ -3,7 +3,7 @@ restrict default nomodify notrap nopeer noquery
 restrict 127.0.0.1
 restrict ::1
 
-restrict {{ interfaces.mgmt.ip }} mask {{ if_mgm.mask }} nomodify notrap
+restrict {{ ntp_restrict_net }} mask {{ ntp_restrict_mask }} nomodify notrap
 
 server 127.127.1.0 iburst # local clock
 fudge 127.127.1.0 stratum 10

@@ -1,3 +1,19 @@
+# roles/bind_install/tasks/main.yml
+---
+
+# Initialise distribution-specific variables
+- name: Pull facts
+  action: setup
+
+- include_vars: "RedHat.yml"
+  when:
+    - ansible_os_family == "RedHat"
+  tags: httpd
+
+- include_vars: "Debian.yml"
+  when:
+    - ansible_os_family == "Debian"
+  tags: httpd
 
 - name: Check whether `bind_zone_master_server_ip` was set
   assert:

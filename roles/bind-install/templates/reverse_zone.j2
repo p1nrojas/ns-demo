@@ -20,8 +20,6 @@ $ORIGIN {{ item|reverse_lookup_zone }}.
 {% for ns in bind_zone_name_servers %}
          IN  NS   {{ ns }}.{{ bind_zone_name }}.
 {% endfor %}
-{% else %}
-                     IN  NS     {{ ansible_hostname }}.{{ bind_zone_name }}.
 {% endif %}
 {% for ns in bind_other_name_servers %}
                      IN  NS     {{ ns }}.
@@ -54,5 +52,3 @@ $ORIGIN {{ item|reverse_lookup_zone }}.
 {% else %}
 {{ ('.'.join(ansible_default_ipv4.address.replace(item+'.','').split('.')[::-1])).ljust(8) }} IN  PTR  {{ ansible_hostname }}.{{ bind_zone_name }}.
 {% endif %}
-{# vim: ft=text
-#}

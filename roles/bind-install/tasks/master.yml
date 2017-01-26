@@ -3,7 +3,7 @@
 - name: Master | Main BIND config file (master)
   template:
     src: etc_named.conf.j2
-    dest: "/etc"
+    dest: "/etc/named.conf"
     owner: "{{ named_owner }}"
     group: "{{ named_group }}"
     mode: '0640'
@@ -15,7 +15,7 @@
 - name: Master | Create forward lookup zone file
   template:
     src: bind_zone.j2
-    dest: "/etc/named/zones"
+    dest: "/etc/named/zones/db.{{ bind_zone_name }}"
     owner: "{{ named_owner }}"
     group: "{{ named_group }}"
     mode: "0640"
@@ -27,7 +27,7 @@
 - name: Master | Create reverse lookup zone file
   template:
     src: reverse_zone.j2
-    dest: "/etc/named/zones"
+    dest: "/etc/named/zones/db.{{ item|reverse_lookup_zone }}"
     owner: "{{ named_owner }}"
     group: "{{ named_group }}"
     mode: "0640"

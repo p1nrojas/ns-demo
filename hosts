@@ -5,5 +5,4 @@
 #
 
 [servers]
-ns1.sdn40r61.lab
-
+10.10.10.20

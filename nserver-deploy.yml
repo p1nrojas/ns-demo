@@ -1,10 +1,13 @@
 # Create dns and ntp server for PoCs and demos
 ---
-- hosts: nservers
+- hosts: servers
   gather_facts: no
+  remote_user: centos
   become: true
   become_method: sudo
   vars:
+# Ansible vars for DNS service    
+    ansible_hostname: 192.168.1.113
     named_group: named
     named_owner: named
     bind_acls:
@@ -20,7 +23,10 @@
       - 10.10.10.0/24
       - 10.20.10.0/24
       - 127.0.0.0/8
-
+    bind_recursion: true
+    bind_forwarders:
+      - 8.8.8.8
+      - 4.4.4.4
     bind_zone_name: nuage.lab
     bind_zone_networks:
       - '10.10.10'
@@ -52,8 +58,11 @@
         weight: 10
         port: 5222
         target: vsd01.nuage.lab
+# ntp vars
+    ntp_restrict_net: 10.0.0.0
+    ntp_restrict_mask: 255.0.0.0
 
   roles:
 #    - domain-deploy
-    - bind-install
+#    - bind-install
     - ntp-install
