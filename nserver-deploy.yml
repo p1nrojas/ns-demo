@@ -62,7 +62,33 @@
     ntp_restrict_net: 10.0.0.0
     ntp_restrict_mask: 255.0.0.0
 
+# dhcp settings
+    dhcp_subnets:
+      - { subnet: 10.10.10.0 ,
+          netmask: 255.255.255.0 ,
+          range_min: 10.10.10.150 ,
+          range_max: 10.10.10.250 ,
+          domain_name: nuage.lab ,
+          domain_name_server: 10.10.10.2 ,
+          router: 10.10.10.1 ,
+          broadcast_address: 10.10.10.255 ,
+          default_lease_time: 600000 ,
+          max_lease_time: 7200000
+        }
+      - { subnet: 10.10.20.0 ,
+          netmask: 255.255.255.0 ,
+          range_min: 10.10.20.150 ,
+          range_max: 10.10.20.250 ,
+          domain_name: nuage-data.lab ,
+          domain_name_server: 10.10.20.2 ,
+          router: 10.10.20.1 ,
+          broadcast_address: 10.10.20.255 ,
+          default_lease_time: 600000 ,
+          max_lease_time: 7200000
+        }
+
+# defined roles       
   roles:
-#    - domain-deploy
 #    - bind-install
-    - ntp-install
+#    - ntp-install
+    - dhcp-install
