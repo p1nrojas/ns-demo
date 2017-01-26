@@ -15,10 +15,6 @@
     - ansible_os_family == "Debian"
   tags: httpd
 
-- name: Check whether `bind_zone_master_server_ip` was set
-  assert:
-    that: bind_zone_master_server_ip is defined
-
 - name: install BIND 
   yum: name=bind state=present
 
@@ -54,7 +50,7 @@
   changed_when: false
   tags: bind
 
-- include: master.yml
+- include: bind.yml
 
 - name: Start BIND service
   service:

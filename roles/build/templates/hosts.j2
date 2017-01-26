@@ -7,7 +7,7 @@
 {% if servers is defined %}
 [servers]
 {% for server in servers %}
-{{ server.hostname }}
+{{ server.hostname }} ansible_host={{ server.ansible_host }}
 {% endfor %}
 {% endif %}
 

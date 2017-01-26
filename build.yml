@@ -15,11 +15,11 @@
           gateway: 10.10.10.1,
           interfaces: [
           { name: eth0 ,
-            bridge: core,
+            bridge: bridge0,
             ip: 10.10.10.20 ,
             netmask: 255.255.255.0 },
           { name: eth1 ,
-            bridge: core,
+            bridge: bridge1,
             ip: 10.10.20.20 ,
             netmask: 255.255.255.0 }
           ]      

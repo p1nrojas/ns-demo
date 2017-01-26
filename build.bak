@@ -11,15 +11,18 @@
     disk_GB: 20
     servers: 
       - { hostname: ns1.sdn40r61.lab,
+          ansible_host: 10.10.10.20 ,
           hypervisor: 192.168.1.113,
           gateway: 10.10.10.1,
           interfaces: [
-             { bridge: bridge0,
-                ip: 10.10.10.20,
-                netmask: 255.255.255.0 },
-             { bridge: bridge1,
-                ip: 10.10.20.20,
-                netmask: 255.255.255.0 }
+          { name: eth0 ,
+            bridge: core,
+            ip: 10.10.10.20 ,
+            netmask: 255.255.255.0 },
+          { name: eth1 ,
+            bridge: core,
+            ip: 10.10.20.20 ,
+            netmask: 255.255.255.0 }
           ]      
          }
     
