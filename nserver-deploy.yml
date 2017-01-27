@@ -1,6 +1,6 @@
 # Create dns and ntp server for PoCs and demos
 ---
-- hosts: servers
+- hosts: nservers
   gather_facts: no
   remote_user: centos
   become: true
